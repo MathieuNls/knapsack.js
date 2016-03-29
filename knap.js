@@ -7,7 +7,7 @@ var items = [
 
 var r = knapsack(items, 30);
 
-console.log(r)
+console.log(r);
 
 /**
  * knapsack
@@ -15,7 +15,6 @@ console.log(r)
  * @param  capacity [description]
  */
 function knapsack(items, capacity){
-  var i, j;
   var matrix = new Array(items.length+1);
 
   //var matrix = [items.length+1][capacity + 1];
@@ -26,10 +25,6 @@ function knapsack(items, capacity){
 
   for (var i = 0; i <= items.length; i++) {
     for (var j = 0; j <= capacity; j++) {
-      console.log(matrix[i][j]);
-
-      console.log(items[i-1]);
-      console.log(i + " " + j);
 
       if(i == 0 || j == 0){
         matrix[i][j] = 0;
@@ -47,8 +42,18 @@ function knapsack(items, capacity){
         matrix[i][j] = matrix[i-1][j];
       }
     }
+    printMatrix(matrix);
   }
 
   return matrix[matrix.length-1][matrix[0].length-1];
+}
 
+function printMatrix(matrix){
+  for (var i = 0; i < matrix.length; i++) {
+    var line = "";
+    for (var j = 0; j < matrix[i].length; j++) {
+      line += matrix[i][j] + ",";
+    }
+    console.log(line);
+  }
 }
