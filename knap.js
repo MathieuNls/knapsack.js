@@ -9,6 +9,32 @@ var r = knapsack(items, 30);
 
 console.log(r);
 
+// I have 680$ to invest
+// I can buy up to 100 stock A at 50$
+// I can buy up to 10 stock B at 80$
+// I can buy up to 18 stock C at 12$
+// Stock A will gain 10% next quarter.
+// Stock B will loose 80% next quarter.
+// Stock C will gain 220% next quarter.
+
+items = [];
+
+for (var i = 0; i < 100; i++) {
+  items.push({w:50, v:50*1.1});
+}
+
+for (var i = 0; i < 10; i++) {
+  items.push({w:80, v:80*0.2});
+}
+
+for (var i = 0; i < 18; i++) {
+  items.push({w:12, v:12*2.2});
+}
+
+r = knapsack(items, 680);
+
+console.log(r);
+
 /**
  * knapsack
  * @param  [{w:Number, v:Number}]   items
@@ -45,8 +71,6 @@ function knapsack(items, capacity){
         matrix[i][j] = matrix[i-1][j];
       }
     }
-    printMatrix(matrix);
-    printMatrix(matrixResultat);
   }
 
   var resultat = [];
